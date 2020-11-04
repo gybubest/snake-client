@@ -10,8 +10,12 @@ const connect = function() {
   // interpret incoming data as text
   conn.setEncoding('utf8'); 
   conn.on('data', data => console.log('Server says: ', data));
-  conn.on('connect', () => console.log('Successfully connected to game server'));
-  conn.on('connect', () => conn.write('Name: YG'));
+  conn.on('connect', () => {
+    console.log('Successfully connected to game server')
+    conn.write('Name: YG');
+    // const move = setInterval(() => conn.write('Move: left'), 50);
+    // setTimeout(() => clearInterval(move), 5000);
+  });
   return conn;
 }
 
